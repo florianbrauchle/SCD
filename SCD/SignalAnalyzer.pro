@@ -29,12 +29,17 @@ CONFIG += c++17
 CONFIG += qwt
 
 # Include Path
+unix {
 INCLUDEPATH += /usr/include/qwt
+}
 INCLUDEPATH += processing
 
 # Libs and Flags
 QMAKE_CXXFLAGS += -fopenmp -O3 -mavx -mfma -march=native
-LIBS += -fopenmp -lfftw3f -lqwt-qt5 # -lfftw3f
+LIBS += -fopenmp -lfftw3f # -lfftw3f
+unix {
+LIBS += -lqwt-qt5
+}
 
 SOURCES += \
         main.cpp \
