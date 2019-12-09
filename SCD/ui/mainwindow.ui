@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>811</width>
+    <height>451</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>SA - Power Spectral Density</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout"/>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>811</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFiles">
+    <property name="title">
+     <string>Files</string>
+    </property>
+    <addaction name="actionLoad_Signal"/>
+   </widget>
+   <widget class="QMenu" name="menuMode">
+    <property name="title">
+     <string>Mode</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionTime"/>
+    <addaction name="actionSpectrum"/>
+    <addaction name="actionSCD"/>
+    <addaction name="actionIQ"/>
+    <addaction name="actionSCD_at_f_0"/>
+    <addaction name="actionWaterfall"/>
+   </widget>
+   <widget class="QMenu" name="menuTransform">
+    <property name="title">
+     <string>Transform</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionToolbar"/>
+   </widget>
+   <addaction name="menuFiles"/>
+   <addaction name="menuMode"/>
+   <addaction name="menuTransform"/>
+  </widget>
+  <action name="actionLoad_Signal">
+   <property name="text">
+    <string>Load Signal</string>
+   </property>
+  </action>
+  <action name="actionTime">
+   <property name="text">
+    <string>Time Domain</string>
+   </property>
+  </action>
+  <action name="actionSpectrum">
+   <property name="text">
+    <string>Power Spectrum Density</string>
+   </property>
+  </action>
+  <action name="actionSCD">
+   <property name="text">
+    <string>Spectral Correlation Density</string>
+   </property>
+  </action>
+  <action name="actionIQ">
+   <property name="text">
+    <string>IQ-Graph</string>
+   </property>
+  </action>
+  <action name="actionSquare">
+   <property name="text">
+    <string>X^2</string>
+   </property>
+  </action>
+  <action name="actionQube">
+   <property name="text">
+    <string>X^4</string>
+   </property>
+  </action>
+  <action name="action_X_2">
+   <property name="text">
+    <string>| X^2 |</string>
+   </property>
+  </action>
+  <action name="actionReload">
+   <property name="text">
+    <string>Reload</string>
+   </property>
+  </action>
+  <action name="actionToolbar">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Toolbar</string>
+   </property>
+  </action>
+  <action name="actionSCD_at_f_0">
+   <property name="text">
+    <string>SCD at f = 0</string>
+   </property>
+  </action>
+  <action name="actionWaterfall">
+   <property name="text">
+    <string>Waterfall</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
