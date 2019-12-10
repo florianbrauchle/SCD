@@ -57,6 +57,8 @@ SCD::SCD(SignalManager* p_sm) :
     cyc_plt = new Spectogram(graph, m_sm, 64);
     on_min_db_3_valueChanged(1);
 
+    update();
+
     // timer für Plot Updates
     timer = new QTimer(this);
     QObject::connect(timer, SIGNAL(timeout()), this, SLOT(plot_timer_update()));
@@ -108,32 +110,26 @@ void SCD::on_scd_fftlen_currentIndexChanged(int index)
 {
     switch (index) {
     case 0:
-        cyc_plt->m_scd.set_fftlen(64);
         cyc_plt->set_fftlen(64);
         m_fft_len = 64;
         break;
     case 1:
-        cyc_plt->m_scd.set_fftlen(128);
         cyc_plt->set_fftlen(128);
         m_fft_len = 128;
         break;
     case 2:
-        cyc_plt->m_scd.set_fftlen(256);
         cyc_plt->set_fftlen(256);
         m_fft_len = 256;
         break;
     case 3:
-        cyc_plt->m_scd.set_fftlen(512);
         cyc_plt->set_fftlen(512);
         m_fft_len = 512;
         break;
     case 4:
-        cyc_plt->m_scd.set_fftlen(1024);
         cyc_plt->set_fftlen(1024);
         m_fft_len = 1024;
         break;
     default:
-        cyc_plt->m_scd.set_fftlen(128);
         cyc_plt->set_fftlen(128);
         m_fft_len = 128;
     }

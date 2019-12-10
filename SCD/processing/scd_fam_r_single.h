@@ -13,7 +13,7 @@ private:
   my_cplx* m_in;         // Eingangssignal
   my_cplx* m_in_win;     // Eingangssignal Gefenstert
   size_t m_in_len;        // Länge des Eingangssignals
-  size_t m_L;             // Fensterlänge
+  size_t m_L;             // Fensterlänge, nochmal prüfen speichert im moment die offsets zwischen zwei Fenster/ Fensterlänge - Overlap
   size_t m_P;             // Anzahl der FFTs die durchgeführt werden
 
 //  size_t m_max_P;
@@ -53,7 +53,7 @@ private:
   bool apply_log = false;
 
 public:
- SCD32(my_cplx* in, size_t len, size_t window_len);
+ SCD32(my_cplx* in, size_t len, size_t p_fft_len);
  ~SCD32();
 
  void update_parameters();

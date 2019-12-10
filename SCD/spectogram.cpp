@@ -10,7 +10,7 @@
 using namespace QtDataVisualization;
 
 Spectogram::Spectogram(Q3DSurface *surface, SignalManager* p_sm, size_t p_fft_len)
-    : m_scd(p_sm->signal, p_sm->size, p_fft_len), m_graph(surface), m_sm(p_sm)
+    : m_scd(p_sm->signal, p_sm->size, p_fft_len), m_graph(surface), m_sm(p_sm), m_fft_len(p_fft_len), m_alpha_len(p_fft_len)
 {
     // Graph Settings
     m_graph->activeTheme()->setType(Q3DTheme::Theme(3));
@@ -45,9 +45,6 @@ Spectogram::Spectogram(Q3DSurface *surface, SignalManager* p_sm, size_t p_fft_le
 
     m_CyclicProxy  = new QSurfaceDataProxy();
     m_CyclicSeries = new QSurface3DSeries(m_CyclicProxy);
-
-    m_fft_len   = 256;
-    m_alpha_len = 256;
 
     dataArray = nullptr;
 

@@ -7,24 +7,25 @@ SCD32::~SCD32(){
   clear_all();
 }
 
-SCD32::SCD32(my_cplx* in, size_t len, size_t window_len): m_in(in), m_in_len(len), m_L(window_len)
+// geht nur für den im moment festgeschriebenen überlappungsfaktor von 4
+SCD32::SCD32(my_cplx* in, size_t len, size_t p_fft_len): m_in(in), m_in_len(len), m_L(p_fft_len/4)
 {
   // Speicher für Ergebnisse
-  m_in_win  = nullptr;
-  m_fft_out = nullptr;
-  m_In      = nullptr;  // Fourier Transformierte des Eingangssignals
-  m_In_I    = nullptr;  // Fourier Transformierte des Eingangssignals
-  m_In_R    = nullptr;  // Fourier Transformierte des Eingangssignals
+  m_in_win    = nullptr;
+  m_fft_out   = nullptr;
+  m_In        = nullptr;  // Fourier Transformierte des Eingangssignals
+  m_In_I      = nullptr;  // Fourier Transformierte des Eingangssignals
+  m_In_R      = nullptr;  // Fourier Transformierte des Eingangssignals
   m_In_I_conj = nullptr;  // Fourier Transformierte des Eingangssignals
   m_In_R_conj = nullptr;  // Fourier Transformierte des Eingangssignals
-  m_win     = nullptr;
+  m_win       = nullptr;
 
-  m_fft_idx  = nullptr;
-  m_alpha    = nullptr; // Alpha Werte
-  m_frequenz = nullptr; // Frequenz Werte
-  m_scd      = nullptr; // Spectrale Korrelation
+  m_fft_idx   = nullptr;
+  m_alpha     = nullptr; // Alpha Werte
+  m_frequenz  = nullptr; // Frequenz Werte
+  m_scd       = nullptr; // Spectrale Korrelation
 
-  m_fft_plan_fft   = nullptr;
+  m_fft_plan_fft = nullptr;
   m_fs = 1.0;
 
   m_window_id = 0;
@@ -361,7 +362,7 @@ void SCD32::update_parameters(){
 void SCD32::set_parameters(my_cplx* in, size_t len, size_t window_len){
   m_in  = in;
   m_in_len = len;
-  m_L = window_len;
+  m_L = window_len; // m_L is the shift between windows, not the window length -> m_n_fft is the window length
 
   update_parameters();
 }
