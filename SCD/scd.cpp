@@ -58,6 +58,7 @@ SCD::SCD(SignalManager* p_sm) :
     on_min_db_3_valueChanged(1);
 
     update();
+    autoscale();
 
     // timer für Plot Updates
     timer = new QTimer(this);
@@ -251,4 +252,20 @@ void SCD::on_b_startPlot_clicked()
 void SCD::on_scd_aspect_ratio_valueChanged(double arg1)
 {
     cyc_plt->set_aspect_ratio(arg1);
+}
+
+void SCD::on_pB_AutoScale_clicked()
+{
+    cyc_plt->m_graph->axisY()->setAutoAdjustRange(true);
+    cyc_plt->m_graph->axisY()->setAutoAdjustRange(false);
+    int tmp_min, tmp_max;
+    tmp_min = std::floor(cyc_plt->m_graph->axisY()->min());
+    tmp_max = std::ceil(cyc_plt->m_graph->axisY()->max());
+    ui->min_db_3->setValue(tmp_min);
+    ui->max_db_3->setValue(tmp_max);
+}
+
+void SCD::autoscale()
+{
+    on_pB_AutoScale_clicked();
 }

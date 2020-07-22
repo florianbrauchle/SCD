@@ -50,7 +50,7 @@ private:
   size_t* m_fft_idx;
 
   // Output
-  bool apply_log = false;
+  bool apply_log = true;
 
 public:
  SCD32(my_cplx* in, size_t len, size_t p_fft_len);

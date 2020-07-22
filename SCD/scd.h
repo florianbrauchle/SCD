@@ -22,6 +22,7 @@ public:
     ~SCD();
 
     void update();
+    void autoscale();
 
 private slots:
     void on_scd_fftlen_currentIndexChanged(int index);
@@ -51,6 +52,8 @@ private slots:
     void on_b_startPlot_clicked();
 
     void on_scd_aspect_ratio_valueChanged(double arg1);
+
+    void on_pB_AutoScale_clicked();
 
 private:
     Ui::SCD *ui;

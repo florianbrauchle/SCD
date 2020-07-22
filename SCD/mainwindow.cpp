@@ -125,6 +125,7 @@ void MainWindow::on_actionLoad_Signal_triggered()
 void MainWindow::update_signal(){
     if( mw_scd != nullptr ){
         mw_scd->update();
+        mw_scd->autoscale();
     }
 
     if( mw_psd != nullptr ){
