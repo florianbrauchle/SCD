@@ -43,6 +43,8 @@ private slots:
 
     void on_max_db_valueChanged(int arg1);
 
+    void on_pushButton_clicked();
+
 private:
     Ui::Waterfall *ui;
 

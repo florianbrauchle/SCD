@@ -25,6 +25,7 @@ Waterfall::Waterfall(SignalManager* p_sm) :
     m_scale = 1;
 
     calc_log = false;
+    on_pushButton_clicked();
 }
 
 Waterfall::~Waterfall()
@@ -93,7 +94,7 @@ void Waterfall::update(){
         fftwf_execute(m_fft_plan_fft);
         // Store color values...
         for (size_t p=0; p < m_fft_len; ++p) {
-            m_waterfall->setPixel(p, -i%m_n_windows, my_cmap(std::abs(m_fft_out[m_fft_idx[p]])));
+            m_waterfall->setPixel(p, i%m_n_windows, my_cmap(std::abs(m_fft_out[m_fft_idx[p]])));
         }
     }
     ui->waterfall->setPixmap(QPixmap::fromImage(*m_waterfall));
@@ -236,5 +237,20 @@ void Waterfall::on_min_db_valueChanged(int arg1)
 
 void Waterfall::on_max_db_valueChanged(int arg1)
 {
+    update();
+}
+
+void Waterfall::on_pushButton_clicked()
+{
+    // Calculate Signal Power
+    float s_power = 0;
+    for (size_t i = 0; i < m_sm->size; i++) {
+        s_power +=std::norm(m_sm->signal[i]);
+    }
+    s_power = s_power / m_sm->size / m_fft_len;
+    s_power = 10 * log10(s_power);
+    std::cout << s_power << std::endl;
+    ui->min_db->setValue(s_power - 30);
+    ui->max_db->setValue(s_power + 10);
     update();
 }
